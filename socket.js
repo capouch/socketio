@@ -62,7 +62,7 @@ setWatch = function ( url_path, file_type ) {
   app.use( express.static( __dirname + '/' ) );
 });
 
-app.get( '/*', function ( request, response ) {
+app.get( '/', function ( request, response ) {
   response.redirect( '/socket.html' );
 });
 
