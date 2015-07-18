@@ -1,0 +1,34 @@
+<!doctype html>
+<!-- socket.html - dynamic JS loading example -->
+<html>
+<head>
+  <script type="text/javascript"
+src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"
+  ></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script id="script_a" src="/js/data.js"></script>
+  <link id="css_a" rel="stylesheet" href="/css/page.css"  type="text/css"/>
+  <script>
+    // Display the value of var "b" from the data.js file
+    $(function () {
+      $( 'body' ).html( b );
+    });
+    // Set event handler to react to "stylesheet" message
+    io.connect('http://localhost').on( 'stylesheet', function ( path ) {
+      // Get rid of current style
+      $( '#css_a' ).remove();
+      // Replace contents of stylesheet with file from websocket
+      $( 'head' ).append(
+        '<link id="css_a" rel="stylesheet" href="'
+        + path +
+        '"/>'
+      );
+      // Redisplay HTML with new styling
+      $( 'body' ).html( b );
+    });
+  </script>
+</head>
+<body>
+  Loading...
+</body>
+</html>
