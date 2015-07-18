@@ -62,14 +62,14 @@ setWatch = function ( url_path, file_type ) {
   app.use( express.static( __dirname + '/' ) );
 });
 
-app.get( '/', function ( request, response ) {
+app.get( '/*', function ( request, response ) {
   response.redirect( '/socket.html' );
 });
 
-// Odd that this wasn't here in the first place
-app.get ('/socket.html', function (request, response) {
-  response.sendFile ( 'socket.html' );
-});
+// Who would have thought such a small thing . . . 
+//app.get ('/socket.html', function (request, response) {
+//  response.sendFile ( 'socket.html', options );
+//});
 
 // -------------- END SERVER CONFIGURATION ----------------
 
